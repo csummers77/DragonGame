@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Dragon Game</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript">
+        console.log("check");
+        // document.getElementById('roll-button').addEventListener('click',function(){
+
+        // })
+        function roll(){
+            // console.dir(dice);
+            // everthing belongs to the window
+            // you dont ever to use window because its already assumed
+            // console.log(window)
+            // window.alert("Alert box")
+            // console.dir(document);
+            // console.dir(document);
+            // console.dir(document.doctype);
+            // console.dir(document.body);
+
+            var Number1 = Math.ceil(Math.random() * 6);
+            var Number2 = Math.ceil(Math.random() * 6);
+            // console.log(Number);
+
+            var dice = document.getElementById('dice');
+            console.dir(dice)
+            var dice1 = dice.children[0];
+            var dice2 = dice.children[1];
+            dice1.src = `pics/d${Number1}.gif`;
+            dice2.src = `pics/d${Number2}.gif`;
+
+            if(Number1 + Number2 > 8){
+                console.log("You won!!");
+                var dragonnDiv = document.getElementById('dragon');
+                dragonnDiv.children[0].src= "./pics/slaying.jpg"
+                dragonnDiv.children[0].style.height = "400px"
+                dragonnDiv.children[0].style.width = "400px"
+            }else{
+                console.log("You lost!!");
+                var dragonnDiv = document.getElementById('dragon');
+                dragonnDiv.children[0].src= "./pics/burnt.jpg"
+
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="game-wrapper">
+        <div id="dragon">
+            <img src="./pics/dragon.png"/>
+        </div>
+        <div id="message">
+            <p>Roll to fight 8 or higher or you will be brunt!</p>
+        </div>
+        <div id="dice">
+            <img src="./pics/d1.gif"/>
+            <img src="./pics/d1.gif"/>
+        </div>
+        <div id="roll">
+            <button id="roll-button" onclick="roll()">Fight!!</button>
+        </div>
+    </div>
+</body>
+</html>
